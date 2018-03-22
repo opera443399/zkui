@@ -1,13 +1,11 @@
 FROM java:8
 
-MAINTAINER Miguel Garcia Puyol <miguelpuyol@gmail.com>
+WORKDIR /opt/zkui
 
-WORKDIR /var/app
+ADD zkui-*.jar /opt/zkui/zkui.jar
+ADD config.cfg /opt/zkui/config.cfg
+ADD bootstrap.sh /opt/zkui/bootstrap.sh
 
-ADD zkui-*.jar /var/app/zkui.jar
-ADD config.cfg /var/app/config.cfg
-ADD bootstrap.sh /var/app/bootstrap.sh
-
-ENTRYPOINT ["/var/app/bootstrap.sh"]
+ENTRYPOINT ["/opt/zkui/bootstrap.sh"]
 
 EXPOSE 9090
